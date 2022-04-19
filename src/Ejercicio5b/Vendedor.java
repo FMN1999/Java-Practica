@@ -1,4 +1,4 @@
-package Ejercicio5a;
+package Ejercicio5b;
 
 public class Vendedor extends Empleado {
 	private Float procenComision;

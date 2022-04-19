@@ -1,4 +1,4 @@
-package Ejercicio5a;
+package Ejercicio5b;
 
 public class Administrativo extends Empleado {
 	private Integer hsExtra;

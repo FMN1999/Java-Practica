@@ -1,4 +1,4 @@
-package Ejercicio5a;
+package Ejercicio5b;
 
 public class Empleado {
 	private Integer dni;

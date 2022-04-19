@@ -4,6 +4,15 @@ public class Empleado {
 	private Integer dni;
 	private String nombre, apellido, email;
 	private Float sueldoBase;
+	
+	public Empleado(int dni, String nombre, String apellido, String email, float sueldo) {
+		this.setNombre(nombre);
+		this.setDni(dni);
+		this.setApellido(apellido);
+		this.setEmail(email);
+		this.setSueldoBase(sueldo);
+	}
+	
 	public Integer getDni() {
 		return dni;
 	}
@@ -35,12 +44,12 @@ public class Empleado {
 		this.sueldoBase = sueldoBase;
 	}
 	
-	public String getDetalle(boolean mostrarDatosSensibles) {
+	public void getDetalle(boolean mostrarDatosSensibles) {
 		String detalle= "Empleado -";
 		if(mostrarDatosSensibles) {
 			detalle+=this.getDni()+": ";
 		}
 		detalle+= this.getApellido()+ ", "+ this.getNombre() + ". Email: " + this.getEmail()+ ".";
-		return detalle;
+		System.out.println(detalle); 
 	}
 }

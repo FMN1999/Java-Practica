@@ -20,26 +20,73 @@ public class Principal {
 		 *por pantalla de ningún tipo. Esto debe ser realizado por otra clase que cree los 
 		 *objetos de las clases lógicas y les asigne los datos necesarios.*/
 		Empleado [] empleados = new Empleado[20];
-		Empleado e1 = new Empleado();
 		Scanner lector = new Scanner(System.in);
+		int eleccion = 0;
+		String nombre, apellido, email;
+		int dni, band;
+		float sueldo;
 		
 		for (int i = 0; i < empleados.length; i++) {
 			System.out.println("Empleado número "+ i+ ":");
 			System.out.println("Nombre:");
-			e1.setNombre(lector.nextLine());
+			nombre = lector.nextLine();
 			System.out.println("Apellido:");
-			e1.setApellido(lector.nextLine());
-			System.out.println("DNI:");
-			e1.setDni(lector.nextInt());
+			apellido = lector.nextLine();
 			System.out.println("Email:");
-			e1.setEmail(lector.nextLine());
+			email = lector.nextLine();
+			System.out.println("DNI:");
+			dni= lector.nextInt();
 			System.out.println("Sueldo base:");
-			e1.setSueldoBase(lector.nextFloat());
+			sueldo = lector.nextFloat();
+			
+			
+			
+			
+			while(eleccion < 1 || eleccion > 2) {
+				System.out.println("Tipo de empleado:");
+				System.out.println("1- Administrativo.");
+				System.out.println("2. Vendedor.");
+				eleccion = lector.nextInt();
+			}
+			
+			if(eleccion == 1) {
+				int extras, meses;
+				System.out.println("Horas Extra:");
+				extras = lector.nextInt();
+				System.out.println("Horas del mes:");
+				meses = lector.nextInt();
+				
+				Administrativo a1 = new Administrativo(dni, nombre, apellido, email, sueldo, extras, meses);
+				empleados[i] = a1;
+			}
+			else {
+				float porcentaje;
+				int ventas;
+				System.out.println("Porcentaje de Comisión:");
+				porcentaje = lector.nextFloat();
+				System.out.println("Total de ventas:");
+				ventas = lector.nextInt();
+				
+				Vendedor v1 = new Vendedor(dni, nombre, apellido, email, sueldo, porcentaje, ventas);
+				
+				empleados[i] = v1;
+			}
+			eleccion = 0;
+			System.out.println("**************¿Ingresa otro?**************");
+			System.out.println("Para salir presione 0, para continuar presione cualquier número...");
+			band = lector.nextInt();
+			if(band == 0) {
+				break;
+			}
 			
 		}
 		
+		for (Empleado empleado : empleados) {
+			if(empleado != null) {
+				empleado.getDetalle(true);
+			}
+		}
 		
-		System.out.println(e1.getDetalle(true));
 		
 		lector.close();
 	}

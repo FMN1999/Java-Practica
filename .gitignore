@@ -1,1 +1,3 @@
 /bin/
+# Whitelist connector/j #
+!/lib/*.jar
